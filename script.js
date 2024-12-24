@@ -1,35 +1,31 @@
 //your code here
 
-// function to update the clock hands based on the current time
-
+// Function to update the clock hands based on the current time
 function updateClock() {
-	// get the current time
-	const now = new Date();
-	const seconds = now.getSeconds();
-	const minutes = now.getminutes();
-	const hours = now.gethours();
+  // Get the current time
+  const now = new Date();
+  const seconds = now.getSeconds();
+  const minutes = now.getMinutes();
+  const hours = now.getHours();
 
-	// get teh clock hands
-	const hourHand = document.querySelector('.hour-hand');
-	const minuteHand = document.querySelector('.min-hand');
-	const secondHand = document.querySelector('.second-hand');
+  // Get the clock hands
+  const hourHand = document.querySelector('.hour-hand');
+  const minuteHand = document.querySelector('.min-hand');
+  const secondHand = document.querySelector('.second-hand');
 
-	// calculate the angles for each hand
-	const secondAngle = (seconds / 60) * 360;
-	// adjust minute hand for seconds
-	const minuteAngle = (minutes / 60) * 360 + (seconds / 60) * 6;
-	// adjust hour hand for minutes
-	const hourAngle = (hours % 12) / 12 * 360 + (minutes / 60) * 30;
+  // Calculate the angles for each hand
+  const secondAngle = (seconds / 60) * 360;
+  const minuteAngle = (minutes / 60) * 360 + (seconds / 60) * 6; // Adjust minute hand for seconds
+  const hourAngle = (hours % 12) / 12 * 360 + (minutes / 60) * 30; // Adjust hour hand for minutes
 
-	// apply the rotation angles to the hands
-	secondHand.style.transform = `rotate(${secondAngle}deg)`;
-	minuteHand.style.transform = `rotate(${minuteAngle}deg)`;
-	hourHand.style.transform = `rotate(${hourAngle}deg)`;
+  // Apply the rotation angles to the hands
+  secondHand.style.transform = `rotate(${secondAngle}deg)`;
+  minuteHand.style.transform = `rotate(${minuteAngle}deg)`;
+  hourHand.style.transform = `rotate(${hourAngle}deg)`;
 }
 
-// call the updateClock function every second(1000ms)
-
+// Call the updateClock function every second (1000ms)
 setInterval(updateClock, 1000);
 
-// initialize the clock immediately
+// Initialize the clock immediately
 updateClock();
